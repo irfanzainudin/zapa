@@ -1,3 +1,3 @@
 rutin utama() {
-    nombor = 1
+    nombor = 1;
 }
