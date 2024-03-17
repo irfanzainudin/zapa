@@ -2,11 +2,12 @@ use clap::Parser;
 use std::fs::read_to_string;
 use std::path::Path;
 use std::process::exit;
+mod token;
 
 /// Simple program to greet a person
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
-struct Fail {
+struct FailZapa {
     /// Name of Zapa file
     #[arg(short, long)]
     zapa_file: String,
@@ -25,26 +26,35 @@ fn read_lines(filename: &Path) -> Vec<String> {
 }
 
 fn main() {
-    let args = Fail::parse();
-    let filename = Path::new(&args.zapa_file);
+    let args: FailZapa = FailZapa::parse();
+    let filename: &Path = Path::new(&args.zapa_file);
+
+    // let tok = token::Token {
+    //     token_type: token::TokenType::LeftParen,
+    //     lexeme: String::from("("),
+    //     literal: String::from("lp"),
+    //     line: 0,
+    // };
+
+    // println!("{}", tok);
 
     match filename.extension() {
         Some(ext) => {
             if ext.to_str().unwrap() == "zapa" {
-                println!("Fail {:?} berjaya diterima", filename);
-                let vec_str = read_lines(filename);
-                println!("Fail {:?} berjaya dibaca", filename);
+                println!("Fail Zapa {:?} berjaya diterima", filename);
+                let vec_str: Vec<String> = read_lines(filename);
+                println!("Fail Zapa {:?} berjaya dibaca", filename);
                 println!("{:?}", vec_str);
                 // println!("Sedang dikompil...");
             } else {
                 println!(
-                    "Fail {:?} tidak menggunakan format yang betul: .zapa",
+                    "Fail Zapa {:?} tidak menggunakan format yang betul: <NAMA_FAIL>.zapa",
                     filename
                 );
             }
         }
         None => {
-            eprintln!("Fail {:?} tidak berjaya diterima", filename);
+            eprintln!("Fail Zapa {:?} tidak berjaya diterima", filename);
             exit(1);
         }
     }
