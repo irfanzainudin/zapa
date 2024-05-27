@@ -17,7 +17,7 @@ fn read_lines(filename: &Path) -> Vec<String> {
     let result = read_to_string(filename);
     match result {
         Ok(res) => {
-            return res.lines().map(String::from).collect();
+            return res.lines().map(str::trim).map(String::from).collect();
         }
         Err(_) => {
             return Vec::new();
