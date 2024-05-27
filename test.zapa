@@ -1,3 +1,13 @@
 rutin utama() {
-    nombor = 1;
+    // Angka Bulat
+    ab nombor = 1;
+    ab kehidupan = 42;
+
+    // Titik Terapung
+    tt perpuluhan = 1.2;
+    tt pi = 3.142;
+    
+    // Pembolehubah Boolean
+    pb boolean = benar;
+    pb boolean = palsu;
 }

@@ -43,9 +43,13 @@ fn main() {
             if ext.to_str().unwrap() == "zapa" {
                 println!("Fail Zapa {:?} berjaya diterima", filename);
                 let vec_str: Vec<String> = read_lines(filename);
+                for vs in &vec_str {
+                    let lines: Vec<String> = vs.as_str().split(' ').map(String::from).collect();
+                    println!("{:?}", lines);
+                }
                 println!("Fail Zapa {:?} berjaya dibaca", filename);
                 println!("{:?}", vec_str);
-                // println!("Sedang dikompil...");
+                println!("Sedang dikompil...");
             } else {
                 println!(
                     "Fail Zapa {:?} tidak menggunakan format yang betul: <NAMA_FAIL>.zapa",
